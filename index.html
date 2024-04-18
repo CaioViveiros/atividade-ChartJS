@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Caio Viveiros | ChartJS</title>
+
+    <style>
+        .body {
+            margin: 0;
+        }
+
+        .screen {
+            width: 100%;
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .grafico_linha {
+            background-color: rgb(255, 255, 255);
+            width: 40vw;
+            height: 40vh;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 255, 255);
+        }
+
+        .grafico_barra {
+            background-color: rgb(255, 255, 255);
+            width: 40vw;
+            height: 40vh;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="screen">
+        <div class="grafico_linha">
+            <canvas id="grafico_linha"></canvas>
+        </div>
+        <div class="grafico_barra">
+            <canvas id="grafico_barra"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // Grafico de linha
+    const labels_linha = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
+
+    const dado_temperatura_linha = [30, 29, 28, 25, 22, 23]
+    const dado_umidade_linha = [80, 82, 80, 85, 80, 83]
+
+    const grafico_linha = {
+        labels: labels_linha,
+        datasets: [{
+            label: 'Temperatura',
+            data: dado_temperatura_linha,
+            borderColor: 'rgb(250, 68, 68)',
+            backgroundColor: 'rgba(250, 68, 68, 0.5)',
+            borderWidth: 3
+        },
+        {
+            label: 'Umidade',
+            data: dado_umidade_linha,
+            borderColor: 'rgb(82, 186, 255)',
+            backgroundColor: 'rgba(82, 186, 255, 0.5)',
+            borderWidth: 3
+        }
+        ]
+    }
+    const config_linha = {
+        type: 'line',
+        data: grafico_linha,
+        options: {}
+    }
+
+    new Chart(
+        document.getElementById('grafico_linha'),
+        config_linha
+    )
+
+    // Grafico de barra
+    const labels_barra = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho']
+
+    const dado_temperatura_barra = [22, 24, 27, 23, 20, 18]
+    const dado_umidade_barra = [90, 89, 93, 87, 88, 82]
+
+    const grafico_barra = {
+        labels: labels_barra,
+        datasets: [{
+            label: 'Temperatura Média',
+            data: dado_temperatura_barra,
+            borderColor: 'rgb(250, 68, 68)',
+            backgroundColor: 'rgba(250, 68, 68, 0.5)',
+            borderWidth: 3
+        },
+        {
+            label: 'Umidade Média',
+            data: dado_umidade_barra,
+            borderColor: 'rgb(82, 186, 255)',
+            backgroundColor: 'rgba(82, 186, 255, 0.5)',
+            borderWidth: 3
+        }
+        ]
+    }
+    const config_barra = {
+        type: 'bar',
+        data: grafico_barra,
+        options: {}
+    }
+
+    new Chart(
+        document.getElementById('grafico_barra'),
+        config_barra
+    )
+</script>
